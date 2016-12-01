@@ -2,6 +2,6 @@
 class Main
 {
 public:
-	int main();
+	int Main::main();
 };
 

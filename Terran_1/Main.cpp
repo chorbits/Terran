@@ -6,3 +6,8 @@ int main() {
 	getchar();
 	return 0;
 }
+
+int Main::main()
+{
+	return 0;
+}
