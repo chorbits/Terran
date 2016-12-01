@@ -1,79 +1,79 @@
 #include <iostream>
 #include <string>
- 
+
 #include "Marine.h"
 #include "Tank.h"
 #include "Terran.h"
 #include "Medic.h"
- 
+
 #define MAX_UNIT_COUNT 5
- 
+
 using namespace std;
- 
+
 int main() {
-     
-    Terran *m[MAX_UNIT_COUNT] = { NULL };
- 
-    int choice;
-    string name;
- 
-    //Î∞òÎ≥µÎ¨∏ÏúºÎ°ú Ï†úÏñ¥: Ïú†Îãõ ÏÉùÏÑ±
-    for (int i = 0; i < MAX_UNIT_COUNT; i++) {
-        cout << "ÏÉùÏÇ∞Ìï† Ïú†ÎãõÏùÑ ÏÑ†ÌÉùÌïòÏÑ∏Ïöî (1=ÎßàÎ¶∞, 2=ÌÉ±ÌÅ¨, 3=Î©îÎîï) : ";
-        cin >> choice;
-        getchar();
- 
-        cout << "Ïú†ÎãõÏùò Ïù¥Î¶ÑÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî: ";
-        cin >> name;
-        getchar();
- 
-        for (int j = 0; j < i; j++) {
-            while (name.compare(m[j]->getName()) == 0) {
-                cout << "Ïù¥ÎØ∏ ÏÇ¨Ïö© Ï§ëÏù∏ Ïù¥Î¶ÑÏûÖÎãàÎã§. Îã§Î•∏ Ïù¥Î¶ÑÏùÑ ÏûÖÎ†•Ìï¥Ï£ºÏã≠ÏãúÏò§: ";
-                cin >> name;
-            }
-        }
- 
-        if (choice == 1) {
-            m[i] = new Marine(name);
-        }
-        else if (choice == 2) {
-            m[i] = new Tank(name);  
-        }
-        else if (choice == 3) {
-            m[i] = new Medic(name);
-        }
-    }
- 
-    cout << "-------------------------------" << endl;
- 
-    //Î∞òÎ≥µÎ¨∏ Ï†úÏñ¥: Ïä§ÌÇ¨ ÏÇ¨Ïö©
-    for (int i = 0; i < MAX_UNIT_COUNT; i++) {
-        m[i]->move();
-        m[i]->attack();
- 
-        Marine *temp1 = dynamic_cast<Marine*>(m[i]);
-        if (temp1 != NULL) {
-            temp1->steampack();
-        }
- 
-        Tank *temp2 = dynamic_cast<Tank*>(m[i]);
-        if (temp2 != NULL) {
-            temp2->siegeMode();
-        }
- 
-        Medic *temp3 = dynamic_cast<Medic*>(m[i]);
-        if (temp3 != NULL) {
-            temp3->restore();
-        }
- 
-    }
- 
-    for (int i = 0; i < MAX_UNIT_COUNT; i++) {
-        delete m[i];
-    }
- 
-    getchar();
-    getchar();
-    return 0;
+
+	Terran *m[MAX_UNIT_COUNT] = { NULL };
+
+	int choice;
+	string name;
+
+	//π›∫ππÆ¿∏∑Œ ¡¶æÓ: ¿Ø¥÷ ª˝º∫
+	for (int i = 0; i < MAX_UNIT_COUNT; i++) {
+		cout << "ª˝ªÍ«“ ¿Ø¥÷¿ª º±≈√«œººø‰ (1=∏∂∏∞, 2=≈ ≈©, 3=∏ﬁµÒ) : ";
+		cin >> choice;
+		getchar();
+
+		cout << "¿Ø¥÷¿« ¿Ã∏ß¿ª ¿‘∑¬«œººø‰: ";
+		cin >> name;
+		getchar();
+
+		for (int j = 0; j < i; j++) {
+			while (name.compare(m[j]->getName()) == 0) {
+				cout << "¿ÃπÃ ªÁøÎ ¡ﬂ¿Œ ¿Ã∏ß¿‘¥œ¥Ÿ. ¥Ÿ∏• ¿Ã∏ß¿ª ¿‘∑¬«ÿ¡÷Ω Ω√ø¿: ";
+				cin >> name;
+			}
+		}
+
+		if (choice == 1) {
+			m[i] = new Marine(name);
+		}
+		else if (choice == 2) {
+			m[i] = new Tank(name);
+		}
+		else if (choice == 3) {
+			m[i] = new Medic(name);
+		}
+	}
+
+	cout << "-------------------------------" << endl;
+
+	//π›∫ππÆ ¡¶æÓ: Ω∫≈≥ ªÁøÎ
+	for (int i = 0; i < MAX_UNIT_COUNT; i++) {
+		m[i]->move();
+		m[i]->attack();
+
+		Marine *temp1 = dynamic_cast<Marine*>(m[i]);
+		if (temp1 != NULL) {
+			temp1->steampack();
+		}
+
+		Tank *temp2 = dynamic_cast<Tank*>(m[i]);
+		if (temp2 != NULL) {
+			temp2->siegeMode();
+		}
+
+		Medic *temp3 = dynamic_cast<Medic*>(m[i]);
+		if (temp3 != NULL) {
+			temp3->restore();
+		}
+
+	}
+
+	for (int i = 0; i < MAX_UNIT_COUNT; i++) {
+		delete m[i];
+	}
+
+	getchar();
+	getchar();
+	return 0;
 }
